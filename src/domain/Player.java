@@ -1,13 +1,15 @@
-package bin;
+package domain;
 
 public class Player {
 	
 	//Instance variables
-	String name;
-	int health;
+	protected String name;
+	protected Level level;
+	protected int health;
+	protected int healthMax;
 	
 	//Constructor Declaration of Player
-	public Player(String name,int health) {
+	public Player(String name) {
 		setName(name);
 		setHealth(health);
 	}

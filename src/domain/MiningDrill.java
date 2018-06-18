@@ -1,4 +1,4 @@
-package bin;
+package domain;
 
 public class MiningDrill {
 

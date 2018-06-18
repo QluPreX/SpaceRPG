@@ -1,6 +1,4 @@
-package bin;
-import bin.Id;
-import bin.Handy;
+package domain;
 
 public class Weapon extends Item {
 	
@@ -9,10 +7,8 @@ public class Weapon extends Item {
 	int damage;
 	float speed;
 	String name;
-	Id id;
-	Handy Handy = new Handy();
 	//Constructor declaration of Weapon
-	public Weapon(String name, Id id, int charge, float speed, int damage) {
+	public Weapon(String name, int charge, float speed, int damage) {
 		setName(name);
 		setCharge(charge);
 		setSpeed(speed);
@@ -39,20 +35,9 @@ public class Weapon extends Item {
 		return this.name;
 	}
 	
-	//Method getter weapon.id
-	public Id getId() {
-		return this.id;
-	}
-	
 	//Method setter weapon.charge
 	private void setCharge(int _charge) {
-		try {
-			if(Handy.isPercent(_charge)) {
-				this.charge = _charge;
-			}
-		}catch(Exception e) {
-			throw new StringIndexOutOfBoundsException("charge of the weapon is incorrect");
-		}
+		this.charge = _charge;
 	}
 	
 	//Method setter weapon.damage
@@ -67,12 +52,8 @@ public class Weapon extends Item {
 	
 	//Method setter weapon.name
 	public void setName(String _name) {
-		try {
-			if (_name.trim().length() > 0){
-				this.name = _name;
-			}
-		}catch(Exception e) {
-			throw new StringIndexOutOfBoundsException("name is empty");
+		if (_name.trim().length() > 0){
+			this.name = _name;
 		}
 	}
 }
