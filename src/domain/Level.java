@@ -12,6 +12,12 @@ public class Level {
 	public static final int LEVELMIN = 1;
 	public static final int LEVELMAX = 30;
 	public static final int EXPPERLEVEL = 100;
+	
+	public Level(int _level) {
+		setExp(0);
+		setLevel(LEVELMIN);
+		setExpMax();
+	}
 	/**
 	 * the getter of the experience
 	 * @return experience
@@ -27,27 +33,20 @@ public class Level {
 	 */
 	public void setExp(int _exp) {
 		//check if exp is not negative
-		if (_exp <= 0) {
+		if (_exp < 0) {
 			
 		}
+		else if(_exp <= this.getExpMax()) {
+			this.exp += _exp;
+		}
 		//checking if exp and the current exp is not higher than the maximum exp
-		else if(expMax >= this.getExp()+_exp) {	
+		else if(this.getExpMax() >= this.getExp()+_exp) {	
 			int expTemp = expMax - (this.getExp()+_exp);
 			addLevel(1);
 			if (expTemp > 0){
 				setExp(expTemp);
 			}
 		}
-		else {
-			this.exp += _exp;
-		}
-	}
-	/**
-	 * When a next level is set, setExpToZero is used
-	 * sets exp to int = 0
-	 */
-	private void setExpToZero() {
-		this.exp = 0;
 	}
 	/**
 	 * Adds level(s), sets the current exp to ZERO
@@ -55,8 +54,8 @@ public class Level {
 	 */
 	private void addLevel(int _level) {
 		if(_level == 1) {
-			setExpToZero();
-			this.level += _level;
+			this.setExp(0);
+			this.setLevel(this.getLevel() + _level);
 			setExpMax();
 		}
 		else {
@@ -67,13 +66,29 @@ public class Level {
 	 * creates a bigger experience per level
 	 */
 	private void setExpMax() {
-		this.expMax = this.level * EXPPERLEVEL;
+		this.expMax = this.getLevel() * EXPPERLEVEL;
 	}
 	/**
-	 * Creates a base level and exp
+	 * the getter of experience max
+	 * @return expMax
 	 */
-	public void createLevel() {
-		this.level = LEVELMIN;
-		this.exp = 0;
+	public int getExpMax() {
+		return this.expMax;
+	}
+	/**
+	 * the getter of the level
+	 * @return level
+	 */
+	public int getLevel() {
+		return this.level;
+	}
+	/**
+	 * the setter of the level
+	 * @param _level
+	 */
+	private void setLevel(int _level) {
+		if ( (_level >= LEVELMIN) || (_level <= LEVELMAX) ) {
+			this.level = _level;
+		}
 	}
 }
