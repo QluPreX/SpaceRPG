@@ -9,6 +9,7 @@ public class Level {
 	protected int level;
 	protected int exp;
 	protected int expMax;
+	public static final int LEVELMIN = 1;
 	public static final int LEVELMAX = 30;
 	public static final int EXPPERLEVEL = 100;
 	/**
@@ -26,7 +27,7 @@ public class Level {
 	 */
 	public void setExp(int _exp) {
 		//check if exp is not negative
-		if (_exp < 0) {
+		if (_exp <= 0) {
 			
 		}
 		//checking if exp and the current exp is not higher than the maximum exp
@@ -68,5 +69,11 @@ public class Level {
 	private void setExpMax() {
 		this.expMax = this.level * EXPPERLEVEL;
 	}
-	
+	/**
+	 * Creates a base level and exp
+	 */
+	public void createLevel() {
+		this.level = LEVELMIN;
+		this.exp = 0;
+	}
 }

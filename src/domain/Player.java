@@ -8,10 +8,13 @@ public class Player {
 	protected int health;
 	protected int healthMax;
 	
+	public static final int HEALTHPLAYER = 100;
+	
 	//Constructor Declaration of Player
 	public Player(String name) {
 		setName(name);
 		setHealth(health);
+		level.createLevel();
 	}
 	
 	//Method getter player.name 
@@ -26,12 +29,8 @@ public class Player {
 	
 	//Method Setter player.name 
 	private void setName(String _name) {
-		try {
-			if (_name.trim().length() > 0){
-				this.name = _name;
-			}
-		}catch(Exception e) {
-			throw new StringIndexOutOfBoundsException("name is empty");
+		if (_name.trim().length() > 0){
+			this.name = _name;
 		}
 	}
 	
@@ -41,7 +40,7 @@ public class Player {
 		if (_health <= 0) {
 			//gameOver
 			
-		}else if (_health > 100) {
+		}else if (_health < HEALTHPLAYER) {
 			//100 needs to change to a dynamic variable from the spaceSuit
 			this.health = _health;
 		}
