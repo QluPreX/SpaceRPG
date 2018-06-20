@@ -2,6 +2,7 @@ package ui;
 
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 
 public class Game implements Runnable {
 	
@@ -12,6 +13,7 @@ public class Game implements Runnable {
 	private int width,height;
 	private BufferStrategy bs;
 	private Graphics g;
+	private BufferedImage test;
 	
 	public Game(String title, int width, int height) {
 		this.title = title;
@@ -20,7 +22,12 @@ public class Game implements Runnable {
 	}
 	
 	public void tick() {
+		
+	}
+	
+	public void init() {
 		this.display = new Display(title,width,height);
+		test = ImageLoader.loadImage("/textures/astronaut_test.png");
 	}
 	
 	public void render() {
@@ -33,15 +40,14 @@ public class Game implements Runnable {
 		g.clearRect(0,0,width,height);
 		//drawing start
 		
+		g.drawImage(test, 20, 20, null);
 		
 		//drawing  end
 		bs.show();
 		g.dispose();
 	}
 	
-	public void init() {
-		
-	}
+
 	
 	public void run() {
 		init();
