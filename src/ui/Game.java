@@ -13,8 +13,6 @@ public class Game implements Runnable {
 	private int width,height;
 	private BufferStrategy bs;
 	private Graphics g;
-	private BufferedImage test;
-	private SpriteSheet sheet;
 	
 	public Game(String title, int width, int height) {
 		this.title = title;
@@ -24,14 +22,13 @@ public class Game implements Runnable {
 	
 	public void tick() {
 		
+		
+		
 	}
 	
 	public void init() {
 		this.display = new Display(title,width,height);
-		test = ImageLoader.loadImage("/spriteSheets/astronaut_test_spritesheet.png");
-		sheet = new SpriteSheet(test);
-		
-		
+		Assets.init();
 	}
 	
 	public void render() {
@@ -43,7 +40,8 @@ public class Game implements Runnable {
 		g = bs.getDrawGraphics();
 		g.clearRect(0,0,width,height);
 		//drawing start
-		g.drawImage(sheet.crop(0, 0,39, 67), 5,5, null);
+		
+		
 		//drawing  end
 		bs.show();
 		g.dispose();
@@ -53,9 +51,21 @@ public class Game implements Runnable {
 	
 	public void run() {
 		init();
+		
+		int FPS = 30;
+		double timePerTick = 1000000000 / FPS, delta = 0;
+		long now,lastTime = System.nanoTime()
+		
 		while(running) {
-			tick();
-			render();
+			now = System.nanoTime();
+			delta += (now - lastTime) / timePerTick;
+			lastTime = now;
+			
+			if (delta >= 1) {
+				tick();
+				render();
+				delta--;
+			}
 		}
 	}
 	
