@@ -6,9 +6,6 @@ import java.awt.image.BufferedImage;
 import Graphics.Assets;
 import Graphics.Tiles.Tile;
 import main.Handler;
-import org.jetbrains.annotations.Contract;
-import ui.InteractScreen;
-
 /**
  * The human class extends the abstract creature class.
  * It can only render and tick for the moment
@@ -51,7 +48,7 @@ public class Human extends NPC {
      * @param x x starting position of the entity
      * @param y y starting position of the entity
      */
-    public Human(Handler handler, float x, float y, int movement_id) {
+    public Human(Handler handler, float x, float y, final int movement_id) {
         super(handler,x, y, Tile.TILEWIDTH-20, Tile.TILEHEIGHT,movement_id);
         setBoundsOffset(boundsX,boundsY,boundsWidth,boundsHeight);
         this.setHealth(health);
@@ -73,7 +70,8 @@ public class Human extends NPC {
      */
     @Override
     public void interact() {
-	    if(!getName().isEmpty()) {
+        System.out.println(this+"HUMAN");
+ 	    if(!getName().isEmpty()) {
             handler.getWorld().getEntityManager().getPlayer().getInteractScreen().addMessage(
                     new String[]{"I am a human", "\n","\n","\n","\n","\n","\n","nice to meet you!"}, this);
 	    }
@@ -97,7 +95,7 @@ public class Human extends NPC {
 
     /**
      * this class's render method
-     * @param g the Graphics class in order to draw anything
+     * @param g2d the Graphics class in order to draw anything
      */
 	@Override
 	public void render(Graphics2D g2d) {

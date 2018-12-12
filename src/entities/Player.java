@@ -261,7 +261,7 @@ public class Player extends Creature {
                     }else if(interactionId == 1){
                         //INTERACT HERE
                         if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_I)){
-                            System.out.println(e.getName());
+                            System.out.println(e);
                             e.interact();
                         }
                     }

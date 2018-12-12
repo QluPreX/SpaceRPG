@@ -28,7 +28,7 @@ public class Moon extends World{
         entityManager.addEntity(new MoonRock(handler, 700, 600));
         entityManager.addEntity(new MoonRock(handler, 250, 1200));
         entityManager.addEntity(new MoonRock(handler, 1200, 900));
-        entityManager.addEntity(new Human(handler,100,130, getEntityManager().getEntityClass().getNPC().MOVEMENT_PATROL_UPDOWN));
+        entityManager.addEntity(new Human(handler,100,130, getEntityManager().getEntityClass().getNPC().MOVEMENT_PATROL_UPDOWN, "steve"));
         entityManager.addEntity(new MoonOre(handler, 600, 664));
         entityManager.addEntity(new MoonOre(handler, 600, 732));
         entityManager.addEntity(new MoonOre(handler, 600, 796));

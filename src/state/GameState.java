@@ -8,6 +8,7 @@ import Graphics.Worlds.Moon;
 import Graphics.Worlds.TestWorld;
 import main.Handler;
 import Graphics.Worlds.World;
+import ui.PauseMenu;
 import ui.UIManager;
 
 
@@ -21,8 +22,8 @@ import ui.UIManager;
 public class GameState extends State{
     private World activeWorld; // the current World the gameState class is rendering and ticking
     private UIManager uiManager;
+    private PauseMenu pauseMenu;
     //Predefine here ALL worlds;
-
     private URL moonUrl = GameState.class.getClassLoader().getResource("worlds/moonWorld.txt");
     private Moon moon = new Moon(handler, new File(moonUrl.getPath()));
     private URL testUrl = GameState.class.getClassLoader().getResource("worlds/world2.txt");
@@ -41,7 +42,9 @@ public class GameState extends State{
 		super(handler);
 		activeWorld = moon;
         handler.setWorld(activeWorld);
+        uiManager = new UIManager(handler);
         handler.getMouseManager().setUiManager(uiManager);
+        pauseMenu = new PauseMenu(handler, uiManager);
 	}
 
     /**
@@ -51,6 +54,7 @@ public class GameState extends State{
 	@Override
 	public void tick() {
 		activeWorld.tick();
+		pauseMenu.tick();
 	}
 
     /**
@@ -61,6 +65,7 @@ public class GameState extends State{
 	@Override
 	public void render(Graphics2D g2d) {
 		activeWorld.render(g2d);
+	    pauseMenu.render(g2d);
 	}
 
     /**
@@ -90,6 +95,18 @@ public class GameState extends State{
             default:
                 return null;
         }
+    }
+
+
+    //getters and setters below
+
+
+    public UIManager getUiManager() {
+        return uiManager;
+    }
+
+    public World getActiveWorld() {
+        return activeWorld;
     }
 
 }

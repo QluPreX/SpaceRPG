@@ -22,9 +22,10 @@ public class UIManager {
         }
     }
     public void render(Graphics2D g2d){
-        for(UIObject o : objects){
+        for(UIObject o : objects) {
             o.render(g2d);
         }
+
         //DEBUGGING
         if(true){
             g2d.setColor(Color.YELLOW);

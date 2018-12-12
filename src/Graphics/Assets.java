@@ -1,8 +1,6 @@
 package Graphics;
 
-import javafx.scene.image.Image;
 import main.Handler;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -48,6 +46,7 @@ public class Assets {
     public static BufferedImage inventoryGrid;
     public static BufferedImage inventoryGridSelected;
     public static BufferedImage inventoryScreenEmpty;
+    public static BufferedImage[] exitButton;
 
 	public static void init() {
 	    font = new Font[30+1];
@@ -57,13 +56,14 @@ public class Assets {
         initUI();
         initBg();
         initFont();
-
     }
+
     public static void initFont(){
 	    for(int i = 0; i < font.length; i++){
 	        font[i] = FontLoader.loadFont("Fonts/arial.ttf", i);
         }
     }
+
 	public static void initAnimationEntities(){
 		playerSheet = new SpriteSheet(ImageLoader.loadImage("spriteSheets/mainChar.png"));
 		playerAnimations = cropFrames(playerSheet,6,4,194,129,true);
@@ -125,6 +125,8 @@ public class Assets {
         inventoryGrid = ImageLoader.loadImage("spriteSheets/inventoryGrid.png");
         inventoryGridSelected = ImageLoader.loadImage("spriteSheets/inventoryGridSelected.png");
         inventoryScreenEmpty = ImageLoader.loadImage("spriteSheets/inventory2Empty.png");
+        exitButton = new BufferedImage[]{new SpriteSheet(ImageLoader.loadImage("spriteSheets/GUI.png")).crop(461,471, 449, 73),
+						new SpriteSheet(ImageLoader.loadImage("spriteSheets/GUI2.png")).crop(461,471, 449, 73)};
 	}
 
 	public static void initBg(){
