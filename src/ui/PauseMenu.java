@@ -7,8 +7,8 @@ import java.awt.event.KeyEvent;
 import Graphics.Assets;
 
 /**
- * This handles the PauseMenu rendering.
- * Note: Not the PauzeMenu button or setting it active/not-active
+ * This handles the behavior of the pause menu
+ * The rendering is done by the uimanager
  *
  */
 public class PauseMenu {
@@ -25,14 +25,14 @@ public class PauseMenu {
             public void onClick(){
                 System.exit(0);
             }
-        }));
+        },0));
 
     }
 
     public void tick(){
-        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_ESCAPE)) {
-            active = !active;
-        }
+            if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_ESCAPE)) {
+                active = !active;
+            }
 
     }
 
@@ -41,7 +41,7 @@ public class PauseMenu {
             return;
         }
         //Render below here
-        uiManager.render(g2d);
+
     }
 
     //Getters and Setters below
@@ -57,4 +57,7 @@ public class PauseMenu {
         return handler;
     }
 
+    public boolean getActive(){
+        return active;
+    }
 }

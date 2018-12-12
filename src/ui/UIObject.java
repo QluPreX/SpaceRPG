@@ -15,6 +15,8 @@ public abstract class UIObject {
     protected int width, height;
     protected boolean hovering = false;
     protected Rectangle bounds;
+    protected Handler handler;
+
     public UIObject(float x, float y, int width, int height){
         setX(x);
         setY(y);
@@ -82,5 +84,9 @@ public abstract class UIObject {
 
     public void setHovering(boolean hovering) {
         this.hovering = hovering;
+    }
+
+    public void setHandler(Handler handler){
+        this.handler = handler;
     }
 }

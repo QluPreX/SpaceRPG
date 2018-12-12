@@ -1,7 +1,9 @@
 package ui;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+import java.lang.annotation.Native;
 import java.nio.Buffer;
 
 
@@ -13,16 +15,29 @@ public class UIImageButton extends UIObject{
 
     private BufferedImage[] images;
     private ClickListener clicker;
+    private Class _class;
+    @Native  public final int ID_PAUSEMENU = 0;
+
+    private int id;
     public UIImageButton(float x, float y, int width, int height, BufferedImage[] images, ClickListener clicker){
         super(x,y,width, height);
         setClicker(clicker);
         setImages(images);
+    }
+    public UIImageButton(float x, float y, int width, int height, BufferedImage[] images, ClickListener clicker, final int SPECIAL_ID){
+        super(x,y,width, height);
+        setClicker(clicker);
+        setImages(images);
+        this.id = SPECIAL_ID;
     }
     @Override
     public void tick(){}
 
     @Override
     public void render(Graphics2D g2d) {
+        if(this.id == ID_PAUSEMENU){
+            handler.getGame().getGameState().getUiManager().getPauseMenu().getActive();
+        }
         if(this.isHovering()){
             g2d.drawImage(images[1], (int) x, (int) y, width, height, null);
         }else{
@@ -49,5 +64,9 @@ public class UIImageButton extends UIObject{
 
     public void setClicker(ClickListener clicker) {
         this.clicker = clicker;
+    }
+
+    public int getId() {
+        return id;
     }
 }

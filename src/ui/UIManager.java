@@ -12,16 +12,26 @@ import Graphics.Assets;
 public class UIManager {
     private Handler handler;
     private ArrayList<UIObject> objects;
+    private boolean setAllHandlers = false;
+    private PauseMenu pauseMenu;
+
     public UIManager(Handler handler){
         this.handler = handler;
         objects  = new ArrayList<UIObject>();
+
     }
     public void tick(){
+        pauseMenu.tick();
         for(UIObject o : objects){
+            if(!setAllHandlers){
+                o.setHandler(handler);
+            }
             o.tick();
         }
+        setAllHandlers = true;
     }
     public void render(Graphics2D g2d){
+        pauseMenu.render(g2d);
         for(UIObject o : objects) {
             o.render(g2d);
         }
@@ -58,5 +68,14 @@ public class UIManager {
     }
     public ArrayList<UIObject> getObjects(){
         return objects;
+    }
+
+
+    public void setPauseMenu(PauseMenu pm){
+        pauseMenu = pm;
+    }
+
+    public PauseMenu getPauseMenu(){
+        return pauseMenu;
     }
 }
