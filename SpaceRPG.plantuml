@@ -1,0 +1,503 @@
+@startuml
+
+title __SPACERPG's Class Diagram__\n
+
+  package Graphics {
+    class Animation {
+    }
+  }
+  
+
+  package Graphics {
+    class Assets {
+    }
+  }
+  
+
+  package items {
+    package items.Tools {
+      class Axe {
+      }
+    }
+  }
+  
+
+  package ui {
+    class Background {
+    }
+  }
+  
+
+  package ui {
+    interface ClickListener {
+    }
+  }
+  
+
+  package entities {
+    abstract class Creature {
+    }
+  }
+  
+
+  package main {
+    class Display {
+    }
+  }
+  
+
+  package entities {
+    abstract class Entity {
+    }
+  }
+  
+
+  package entities {
+    class EntityManager {
+    }
+  }
+  
+
+  package ui {
+    class Equipmenu {
+    }
+  }
+  
+
+  package Graphics {
+    class FontLoader {
+    }
+  }
+  
+
+  package main {
+    class Game {
+    }
+  }
+  
+
+  package Graphics {
+    class GameCamera {
+    }
+  }
+  
+
+  package state {
+    class GameState {
+    }
+  }
+  
+
+  package entities {
+    package entities.unusedEntities {
+      abstract class Gear {
+      }
+    }
+  }
+  
+
+  package main {
+    class Handler {
+    }
+  }
+  
+
+  package entities {
+    package entities.npcs {
+      class Human {
+      }
+    }
+  }
+  
+
+  package Graphics {
+    class ImageLoader {
+    }
+  }
+  
+
+  package ui {
+    class InteractScreen {
+    }
+  }
+  
+
+  package ui {
+    class Inventory {
+    }
+  }
+  
+
+  package items {
+    class Item {
+    }
+  }
+  
+
+  package items {
+    class ItemManager {
+    }
+  }
+  
+
+  package input {
+    class KeyManager {
+    }
+  }
+  
+
+  package main {
+    class Launcher {
+    }
+  }
+  
+
+  package entities {
+    class Level {
+    }
+  }
+  
+
+  package entities {
+    package entities.unusedEntities {
+      class Love {
+      }
+    }
+  }
+  
+
+  package state {
+    class MenuState {
+    }
+  }
+  
+
+  package entities {
+    package entities.unusedEntities {
+      class Milk {
+      }
+    }
+  }
+  
+
+  package entities {
+    package entities.staticEntities {
+      class MoonOre {
+      }
+    }
+  }
+  
+
+  package entities {
+    package entities.staticEntities {
+      class MoonRock {
+      }
+    }
+  }
+  
+
+  package Graphics {
+    package Graphics.Tiles {
+      package Graphics.Tiles.MoonTileBig {
+        class MoonTileBig1 {
+        }
+      }
+    }
+  }
+  
+
+  package Graphics {
+    package Graphics.Tiles {
+      package Graphics.Tiles.MoonTileBig {
+        class MoonTileBig2 {
+        }
+      }
+    }
+  }
+  
+
+  package Graphics {
+    package Graphics.Tiles {
+      package Graphics.Tiles.MoonTileBig {
+        class MoonTileBig3 {
+        }
+      }
+    }
+  }
+  
+
+  package Graphics {
+    package Graphics.Tiles {
+      package Graphics.Tiles.MoonTileBig {
+        class MoonTileBig4 {
+        }
+      }
+    }
+  }
+  
+
+  package Graphics {
+    package Graphics.Tiles {
+      package Graphics.Tiles.MoonTileBig {
+        class MoonTileBig5 {
+        }
+      }
+    }
+  }
+  
+
+  package Graphics {
+    package Graphics.Tiles {
+      package Graphics.Tiles.MoonTileBig {
+        class MoonTileBig6 {
+        }
+      }
+    }
+  }
+  
+
+  package Graphics {
+    package Graphics.Tiles {
+      package Graphics.Tiles.MoonTileBig {
+        class MoonTileBig7 {
+        }
+      }
+    }
+  }
+  
+
+  package input {
+    class MouseManager {
+    }
+  }
+  
+
+  package entities {
+    package entities.npcs {
+      abstract class NPC {
+      }
+    }
+  }
+  
+
+  package items {
+    package items.Tools {
+      class Pickaxe {
+      }
+    }
+  }
+  
+
+  package entities {
+    class Player {
+    }
+  }
+  
+
+  package ui {
+    class SpaceRPG_UI {
+    }
+  }
+  
+
+  package Graphics {
+    class SpriteSheet {
+    }
+  }
+  
+
+  package state {
+    abstract class State {
+    }
+  }
+  
+
+  package entities {
+    package entities.staticEntities {
+      abstract class StaticEntity {
+      }
+    }
+  }
+  
+
+  package Graphics {
+    class Text {
+    }
+  }
+  
+
+  package Graphics {
+    package Graphics.Tiles {
+      class Tile {
+      }
+    }
+  }
+  
+
+  package items {
+    package items.Tools {
+      abstract class Tool {
+      }
+    }
+  }
+  
+
+  package entities {
+    package entities.staticEntities {
+      class Tree {
+      }
+    }
+  }
+  
+
+  package entities {
+    package entities.staticEntities {
+      class TreeLog {
+      }
+    }
+  }
+  
+
+  package ui {
+    class UIImageButton {
+    }
+  }
+  
+
+  package ui {
+    class UIManager {
+    }
+  }
+  
+
+  package ui {
+    abstract class UIObject {
+    }
+  }
+  
+
+  package ui {
+    class UIshowObject {
+    }
+  }
+  
+
+  package Graphics {
+    package Graphics.Tiles {
+      class UnknownTile {
+      }
+    }
+  }
+  
+
+  package utilities {
+    class Utils {
+    }
+  }
+  
+
+  package entities {
+    package entities.unusedEntities {
+      class Visor {
+      }
+    }
+  }
+  
+
+  package entities {
+    package entities.unusedEntities {
+      class Weapon {
+      }
+    }
+  }
+  
+
+  package Graphics {
+    class World {
+    }
+  }
+  
+
+  Creature -up-|> Entity
+  Entity o-- Handler : handler
+  EntityManager o-- Handler : handler
+  EntityManager o-- Player : player
+  Equipmenu o-- Handler : handler
+  Game -up-|> Runnable
+  Game o-- Display : display
+  Game o-- KeyManager : keyManager
+  Game o-- MouseManager : mouseManager
+  Game o-- GameCamera : gameCamera
+  Game o-- State : gameState
+  Game o-- State : menuState
+  Game o-- Handler : handler
+  GameCamera o-- Handler : handler
+  GameState -up-|> State
+  GameState o-- Player : player
+  GameState o-- World : world
+  Handler o-- Game : game
+  Handler o-- World : world
+  Human -up-|> NPC
+  InteractScreen o-- Handler : handler
+  InteractScreen o-- Entity : currentEnt
+  Inventory o-- Handler : handler
+  Item o-- Handler : handler
+  ItemManager o-- Handler : handler
+  KeyManager -up-|> KeyListener
+  MenuState -up-|> State
+  MenuState o-- Background : background
+  MenuState o-- UIManager : uiManager
+  MoonOre -up-|> StaticEntity
+  MoonRock -up-|> StaticEntity
+  MoonTileBig1 -up-|> Tile
+  MoonTileBig2 -up-|> Tile
+  MoonTileBig3 -up-|> Tile
+  MoonTileBig4 -up-|> Tile
+  MoonTileBig5 -up-|> Tile
+  MoonTileBig6 -up-|> Tile
+  MoonTileBig7 -up-|> Tile
+  MouseManager -up-|> MouseListener
+  MouseManager -up-|> MouseMotionListener
+  MouseManager o-- UIManager : uiManager
+  NPC -up-|> Creature
+  Pickaxe -up-|> Tool
+  Player -up-|> Creature
+  Player o-- Animation : animIdle
+  Player o-- Animation : animWalkFront
+  Player o-- Animation : animWalkBack
+  Player o-- Animation : animWalkLeft
+  Player o-- Animation : animWalkRight
+  Player o-- Animation : animAttackFront
+  Player o-- Animation : animAttackBack
+  Player o-- Animation : animAttackLeft
+  Player o-- Animation : animAttackRight
+  Player o-- Level : level
+  Player o-- Milk : milk
+  Player o-- Love : love
+  Player o-- Inventory : inventory
+  Player o-- InteractScreen : interactScreen
+  Player o-- Equipmenu : equipmenu
+  State o-- Handler : handler
+  StaticEntity -up-|> Entity
+  Tool -up-|> Item
+  Tree -up-|> StaticEntity
+  TreeLog -up-|> StaticEntity
+  UIImageButton -up-|> UIObject
+  UIImageButton o-- ClickListener : clicker
+  UIManager o-- Handler : handler
+  UIObject o-- Handler : handler
+  UnknownTile -up-|> Tile
+  Visor -up-|> Gear
+  World o-- Handler : handler
+  World o-- EntityManager : entityManager
+  World o-- ItemManager : itemManager
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

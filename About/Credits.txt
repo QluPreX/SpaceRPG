@@ -1,0 +1,19 @@
+ALL Credits are put here!! (for final credits of the game)
+----------------------------------------------------------
+Weronika Mikorska: 	a_human_1_karel_26.06.18.png
+			        cat.png
+			        mini_First_Cat_DANCE.png
+
+
+
+
+----------------------
+Utilities:
+IDE:    Inteljj Jetbrains
+        Eclipse Mars & Oxygen
+        Visual Studio Code
+Image editor:
+        Paint.net
+        IceCream Image Cropper
+        Tile Studio II
+        Piskel
