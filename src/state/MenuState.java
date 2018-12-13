@@ -9,7 +9,6 @@ import ui.UIManager;
 import Graphics.Assets;
 
 /**
- *
  * @Since 2018-10-17
  */
 public class MenuState extends State{

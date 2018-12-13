@@ -32,10 +32,11 @@ public class Game implements Runnable {
 	private int width,height;
 	private BufferStrategy bs;
 	private Graphics2D g2d;
-	
+
 	//input
 	private KeyManager keyManager;
 	private MouseManager mouseManager;
+
 	//Camera
 	private GameCamera gameCamera;
 
@@ -48,12 +49,14 @@ public class Game implements Runnable {
     private Handler handler;
     private EntityManager entityManager;
     private Logger logger;
+
 	/**
 	 * The contructor of the game class, on calling the contructor a keyManager will be made.
 	 * @param title the title that is given to the game
 	 * @param width the width of the game's display
 	 * @param height the height of the game's display
 	 */
+
 	public Game(String title, int width, int height) {
 		this.title = title;
 		this.width = width;
@@ -61,11 +64,13 @@ public class Game implements Runnable {
 		this.keyManager = new KeyManager();
 		this.mouseManager = new MouseManager();
 	}
+
 	/**
 	 * the init method will be runned onced, this method is the first noncontructor method to be called in the class (after the start method).
 	 * here, the Game will create a display with the current keyManager.
 	 * initialize the assets of the Assets class and create all the GameStates.
 	 */
+
 	public void init() {
 
 		this.display = new Display(title,width,height);
