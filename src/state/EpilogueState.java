@@ -16,7 +16,7 @@ public class EpilogueState extends State{
     public EpilogueState(Handler handler) {
         super(handler);
         background = new Background(handler);
-        uiManager  = new UIManager(handler);
+        uiManager  = new UIManager(handler, 0);
         interactScreen = new InteractScreen(handler);
         handler.getMouseManager().setUiManager(uiManager);
         startSeq();

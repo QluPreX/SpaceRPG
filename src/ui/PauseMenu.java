@@ -20,12 +20,6 @@ public class PauseMenu {
         this.handler = handler;
         this.uiManager = uiManager;
         System.out.println(uiManager);
-        uiManager.addObject(new UIImageButton(50,50,Assets.exitButton[0].getWidth(), Assets.exitButton[0].getHeight(), Assets.exitButton,new ClickListener(){
-            @Override
-            public void onClick(){
-                System.exit(0);
-            }
-        },0));
 
     }
 

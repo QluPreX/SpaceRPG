@@ -8,9 +8,11 @@ import Graphics.Worlds.Moon;
 import Graphics.Worlds.TestWorld;
 import main.Handler;
 import Graphics.Worlds.World;
+import ui.ClickListener;
 import ui.PauseMenu;
+import ui.UIImageButton;
 import ui.UIManager;
-
+import Graphics.Assets;
 
 /**
  * The gameState class has contains the game-elements/playable elements of this project
@@ -41,9 +43,14 @@ public class GameState extends State{
 		super(handler);
 		activeWorld = moon;
         handler.setWorld(activeWorld);
-        uiManager = new UIManager(handler);
-        uiManager.setPauseMenu(new PauseMenu(handler, uiManager));
+        uiManager = new UIManager(handler, 1);
         handler.getMouseManager().setUiManager(uiManager);
+        uiManager.addObject(new UIImageButton(50,50, Assets.exitButton[0].getWidth(), Assets.exitButton[0].getHeight(), Assets.exitButton,new ClickListener(){
+            @Override
+            public void onClick(){
+                System.exit(0);
+            }
+        },1));
 	}
 
     /**
@@ -52,8 +59,8 @@ public class GameState extends State{
      */
 	@Override
 	public void tick() {
+        uiManager.tick();
 		activeWorld.tick();
-		uiManager.tick();
 	}
 
     /**
@@ -64,7 +71,7 @@ public class GameState extends State{
 	@Override
 	public void render(Graphics2D g2d) {
 		activeWorld.render(g2d);
-	    uiManager.render(g2d);
+        uiManager.render(g2d);
 	}
 
     /**

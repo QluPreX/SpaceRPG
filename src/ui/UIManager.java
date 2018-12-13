@@ -2,6 +2,7 @@ package ui;
 import main.Handler;
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.lang.annotation.Native;
 import java.util.ArrayList;
 import Graphics.Text;
 import Graphics.Assets;
@@ -14,14 +15,23 @@ public class UIManager {
     private ArrayList<UIObject> objects;
     private boolean setAllHandlers = false;
     private PauseMenu pauseMenu;
+    private int id;
+    //SPECIAL ID's FOR DIFFERENT TYPES OF VARIETIES OF UIMANAGER
+    @Native public final int ID_BASE = 0; //The base UImanager, not special attached
+    @Native public final int ID_PAUSE = 1; //UIManger with a PauseMenu attached
 
-    public UIManager(Handler handler){
+    public UIManager(Handler handler, final int ID){
         this.handler = handler;
         objects  = new ArrayList<UIObject>();
+        if(ID == ID_PAUSE){
+            setPauseMenu(new PauseMenu(handler, this));
+        }else{
+            pauseMenu = null;
+        }
+        this.id = ID;
 
     }
     public void tick(){
-        pauseMenu.tick();
         for(UIObject o : objects){
             if(!setAllHandlers){
                 o.setHandler(handler);
@@ -31,7 +41,6 @@ public class UIManager {
         setAllHandlers = true;
     }
     public void render(Graphics2D g2d){
-        pauseMenu.render(g2d);
         for(UIObject o : objects) {
             o.render(g2d);
         }
