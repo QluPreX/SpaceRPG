@@ -6,6 +6,7 @@ import Graphics.Assets;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import Graphics.Text;
+import utilities.Utils;
 
 /**
  *
@@ -17,12 +18,13 @@ public class Background {
     private Handler handler;
     private BufferedImage nextBackground;
     private float transitionSpeed;
-    public int _x =0;
+    public int _x =255;
     private BufferedImage imgMask,faded;
     private Graphics2D g2d;
-    private int opacity = 255;
-    private long lastTimer, Cooldown = 800/*ms*/, Timer = Cooldown;
-    private boolean fade = false;
+    private float alpha = 0.0f;
+    private boolean fade = false; //true when a faded bg is set
+    private boolean fadeDraw = false; //true when a timer sets to true and draw next fade alpha
+    private Utils utils;
     public Background(Handler handler){
         this.width = handler.getGame().getWidth();
         this.handler = handler;
@@ -44,34 +46,54 @@ public class Background {
         this.width = width;
         this.height = height;
         imgMask = new BufferedImage(img.getWidth(),img.getHeight(),BufferedImage.TYPE_INT_ARGB);
-        opacity = 255;
+        utils = new Utils();
+        utils.setTimer(800);
     }
     public void tick() {
-        _x=_x+1;
-        System.out.println(_x);
+        //_x--;
+        //System.out.println(_x);
         if(fade){
-
+            fadeDraw = utils.getTimer();
         }
     }
 
     public void render(Graphics2D g2d) {
         if(fade){
-            g2d.drawImage(img,x,y,width,height,null);
-            drawFade(g2d,_x);
+            doFade(g2d);
         }else{
             g2d.drawImage(img, x,y, width, height, null);
         }
     }
 
+
+        private void doFade(Graphics2D g2d){
+
+
+            g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,alpha));
+            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
+
+            g2d.drawImage(img,x,y,width,height,null);
+            if(fadeDraw){
+                alpha += 0.01f;
+            }
+            System.out.println(alpha);
+            if (alpha >= 1.0f) {
+                alpha = 1.0f;
+            }
+
+            }
+
+
+
     public void drawFade(Graphics2D g2d,int _x){
         LinearGradientPaint lgp  =  new LinearGradientPaint(
-                new Point(-200,0),
+                new Point(0,0),
                 new Point(img.getWidth(),0),
                 new float[]{0,1},
-                new Color[]{new Color(0,0,0,0), new Color(255,255,255,255)}
+                new Color[]{new Color(0,255,0,0), new Color(255,255,255,255)}
         );
         g2d.setPaint(lgp);
-        g2d.fillRect(0,0,_x,img.getHeight());
+        g2d.fillRect(0,0,img.getWidth(),img.getHeight());
     }
 
     public static BufferedImage applyMask(BufferedImage sourceImage, BufferedImage maskImage, int method) {

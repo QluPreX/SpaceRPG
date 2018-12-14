@@ -14,6 +14,10 @@ public class Utils {
      * @param path This a File object, this file needs to be readable by UTF-8 (or ASCII at least)
      * @return
      */
+
+
+    private long lastTimer, cooldown/*ms*/, timer;
+
     public static String loadFileAsString(File path){
 
         StringBuilder builder = new StringBuilder();
@@ -41,4 +45,21 @@ public class Utils {
         }
     }
 
+    public void setTimer(int cooldown){
+        this.cooldown = cooldown;
+        timer = cooldown;
+    }
+    public boolean getTimer(){
+
+        timer += System.currentTimeMillis() - lastTimer;
+        lastTimer = System.currentTimeMillis();
+
+        if (timer < cooldown) {
+
+            return false;
+
+        }
+        timer = 0;
+        return true;
+    }
 }
