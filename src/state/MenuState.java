@@ -46,7 +46,6 @@ public class MenuState extends State{
 	public void render(Graphics2D g2d) {
         background.render(g2d);
 	    uiManager.render(g2d);
-
 	}
 
     public UIManager getUiManager() {
