@@ -1,5 +1,6 @@
 package Graphics.Worlds;
 
+import entities.npcs.Dog;
 import entities.npcs.Human;
 import entities.npcs.NPC;
 import entities.staticEntities.*;
@@ -34,6 +35,7 @@ public class Moon extends World{
         entityManager.addEntity(new MoonOre(handler, 600, 796));
         entityManager.addEntity(new MoonOre(handler, 800, 600));
         entityManager.addEntity(new Door(handler, 100, 400,0,0,1));
+        entityManager.addEntity(new Dog(handler, 250,130, getEntityManager().getEntityClass().getNPC().MOVEMENT_RANDOM_LEFTRIGHT,"Piesek"));
         super.loadWorld(path);
 
     }

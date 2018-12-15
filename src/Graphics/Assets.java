@@ -28,6 +28,7 @@ public class Assets {
     public static BufferedImage moonDust;
     public static BufferedImage human;
     public static BufferedImage moonOre;
+    public static BufferedImage dog;
     //tiles
 	public static BufferedImage[] moonTileBig;
 	public static BufferedImage unknownTile;
@@ -48,6 +49,11 @@ public class Assets {
     public static BufferedImage inventoryScreenEmpty;
     public static BufferedImage[] exitButton;
 
+    //Interaction Screen Faces
+    public static BufferedImage interactionDog;
+    public static BufferedImage interactionSpaceCat;
+    public static BufferedImage interactionCat;
+
 	public static void init() {
 	    font = new Font[30+1];
         initAnimationEntities();
@@ -56,8 +62,13 @@ public class Assets {
         initUI();
         initBg();
         initFont();
+        initInteractionScreenFaces();
     }
-
+    public static void initInteractionScreenFaces(){
+	    interactionCat = new SpriteSheet(ImageLoader.loadImage("new_graphics/kotek.png")).crop(60,580,947,792);
+        interactionSpaceCat = new SpriteSheet(ImageLoader.loadImage("new_graphics/statek.png")).crop(100,766,835, 506);
+	    interactionDog = new SpriteSheet(ImageLoader.loadImage("new_graphics/piesek.png")).crop(143,626,627,513);
+    }
     public static void initFont(){
 	    for(int i = 0; i < font.length; i++){
 	        font[i] = FontLoader.loadFont("Fonts/arial.ttf", i);
@@ -108,6 +119,7 @@ public class Assets {
 		moonDust = ImageLoader.loadImage("spriteSheets/moonDust.png");
 		human = new SpriteSheet(ImageLoader.loadImage("spriteSheets/human.png")).crop(0,0,32 ,64);
 	    moonOre = ImageLoader.loadImage("spriteSheets/moonOre.png");
+	    dog =  ImageLoader.loadImage("spriteSheets/dog_test.png");
 	}
 
 	public static void initUI(){
