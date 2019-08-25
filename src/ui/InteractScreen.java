@@ -1,6 +1,7 @@
 package ui;
 
 import entities.Entity;
+import entities.npcs.Dog;
 import main.Handler;
 import Graphics.*;
 import java.awt.*;
@@ -104,7 +105,11 @@ public class InteractScreen {
                 setImageHeight(currentEnt.getHeight());
                 setImageWidth(currentEnt.getWidth());
             }
-            g2d.drawImage(currentEnt.getTexture(), getImageX(), getImageY(), getImageWidth(), getImageHeight(), null);
+            if(currentEnt instanceof Dog){
+                g2d.drawImage(((Dog) currentEnt).getInteractFace(), getImageX()-20, getImageY()-20, getImageWidth()+40, getImageHeight()+40, null);
+            }else {
+                g2d.drawImage(currentEnt.getTexture(), getImageX(), getImageY(), getImageWidth(), getImageHeight(), null);
+            }
         }else{
             g2d.drawImage(Assets.interactScreenStory,getScreenX(),getScreenY(),getScreenWidth(),getScreenHeight(),null);
 

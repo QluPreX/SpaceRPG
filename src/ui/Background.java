@@ -6,6 +6,7 @@ import Graphics.Assets;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import Graphics.Text;
+import utilities.Utils;
 
 /**
  *
@@ -17,12 +18,13 @@ public class Background {
     private Handler handler;
     private BufferedImage nextBackground;
     private float transitionSpeed;
+    public int _x =255;
     private BufferedImage imgMask,faded;
     private Graphics2D g2d;
-    private int _x = 1;
-    private int opacity = 255;
-    private long lastTimer, Cooldown = 800/*ms*/, Timer = Cooldown;
-    private boolean fade = false;
+    private float alpha = 0.0f;
+    private boolean fade = false; //true when a faded bg is set
+    private boolean fadeDraw = false; //true when a timer sets to true and draw next fade alpha
+    private Utils utils;
     public Background(Handler handler){
         this.width = handler.getGame().getWidth();
         this.handler = handler;
@@ -44,67 +46,63 @@ public class Background {
         this.width = width;
         this.height = height;
         imgMask = new BufferedImage(img.getWidth(),img.getHeight(),BufferedImage.TYPE_INT_ARGB);
-        opacity = 255;
+        utils = new Utils();
+        utils.setTimer(800);
     }
     public void tick() {
+        //_x--;
+        //System.out.println(_x);
         if(fade){
-            if(imgMask != null){
-                if(opacity >= 150){
-                    Timer += System.currentTimeMillis() - lastTimer +opacity;
-                    lastTimer = System.currentTimeMillis();
-                    if (Timer < Cooldown) {
-                        return;
-                    }else{
-                        Timer = 0;
-                        opacity--;
-                    }
-                }
-                transistion();
-            }
+            fadeDraw = utils.getTimer();
         }
-
     }
 
     public void render(Graphics2D g2d) {
         if(fade){
-            g2d.drawImage(faded,x,y,width,height,null);
+            doFade(g2d);
         }else{
             g2d.drawImage(img, x,y, width, height, null);
         }
     }
-    public void transistion(){
-        setTransition();
-        faded = applyMask(img, imgMask, AlphaComposite.DST_IN);
-    }
 
-    public void setTransition(){
-        g2d = imgMask.createGraphics();
+
+        private void doFade(Graphics2D g2d){
+
+
+            g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,alpha));
+            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
+
+            g2d.drawImage(img,x,y,width,height,null);
+            if(fadeDraw){
+                alpha += 0.01f;
+            }
+            System.out.println(alpha);
+            if (alpha >= 1.0f) {
+                alpha = 1.0f;
+            }
+
+            }
+
+
+
+    public void drawFade(Graphics2D g2d,int _x){
         LinearGradientPaint lgp  =  new LinearGradientPaint(
-                new Point(-200,0),
-                new Point(imgMask.getWidth(),0),
+                new Point(0,0),
+                new Point(img.getWidth(),0),
                 new float[]{0,1},
-                new Color[]{new Color(0,0,0,0), new Color(0,0,0,opacity)}
+                new Color[]{new Color(0,255,0,0), new Color(255,255,255,255)}
         );
         g2d.setPaint(lgp);
-        g2d.fillRect(0,0,imgMask.getWidth(),imgMask.getHeight());
-        g2d.dispose();
+        g2d.fillRect(0,0,img.getWidth(),img.getHeight());
     }
 
-
     public static BufferedImage applyMask(BufferedImage sourceImage, BufferedImage maskImage, int method) {
-
         BufferedImage maskedImage = null;
         if (sourceImage != null) {
-
             int width = maskImage.getWidth();
             int height = maskImage.getHeight();
-
             maskedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
             Graphics2D mg = maskedImage.createGraphics();
-            int x = (width - sourceImage.getWidth()) / 2;
-            int y = (height - sourceImage.getHeight()) / 2;
-
-            mg.drawImage(sourceImage, x, y, null);
             mg.setComposite(AlphaComposite.getInstance(method));
             mg.drawImage(maskImage, 0, 0, null);
 

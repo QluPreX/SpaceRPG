@@ -9,7 +9,6 @@ import ui.UIManager;
 import Graphics.Assets;
 
 /**
- *
  * @Since 2018-10-17
  */
 public class MenuState extends State{
@@ -20,7 +19,7 @@ public class MenuState extends State{
         uiManager = new UIManager(handler, 0);
         handler.getMouseManager().setUiManager(uiManager);
         background = new Background(handler);
-        background.setBackground(Assets.cat,0,0,handler.getWidth(),handler.getHeight());
+        background.setBackground(Assets.interactionSpaceCat,0,0,handler.getWidth(),handler.getHeight());
 		uiManager.addObject(new UIImageButton(50, 50, 225, 37, Assets.buttonStartGame, new ClickListener() {
             @Override
             public void onClick() {
@@ -47,7 +46,6 @@ public class MenuState extends State{
 	public void render(Graphics2D g2d) {
         background.render(g2d);
 	    uiManager.render(g2d);
-
 	}
 
     public UIManager getUiManager() {
